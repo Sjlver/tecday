@@ -6,6 +6,12 @@
 
 const char *SECRET = "youllneverguess";
 
+void start_shell() {
+    printf("Have a lot of fun!\n");
+    execl("/bin/sh", "sh", "-i", (char*)0);
+    printf("After execl...\n");
+}
+
 void read_password(char *password) {
     int c;
     int i = 0;
@@ -26,12 +32,6 @@ int authorize() {
     read_password(password);
 
     return !strcmp(password, SECRET);
-}
-
-void start_shell() {
-    printf("Have a lot of fun!\n");
-    execl("/bin/sh", "sh", (char*)0);
-    printf("After execl...\n");
 }
 
 int main() {
