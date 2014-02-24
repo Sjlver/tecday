@@ -1,0 +1,11 @@
+# Binaries
+demo/logindemo
+*.dSYM/
+
+# Other files
+flyer/
+presentation/
+satw_tecday.mm
+
+# Temps
+.*.swp
