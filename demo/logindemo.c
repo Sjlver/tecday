@@ -6,12 +6,9 @@
 
 const char *SECRET = "youllneverguess";
 
-int authorize() {
-    char password[20];
+void read_password(char *password) {
     int c;
     int i = 0;
-
-    printf("Enter Password: ");
 
     c = getchar();
     while (c != '\n' && c != EOF) {
@@ -20,12 +17,21 @@ int authorize() {
         c = getchar();
     }
     password[i] = 0;
+}
+
+int authorize() {
+    char password[16];
+
+    printf("Enter Password: ");
+    read_password(password);
 
     return !strcmp(password, SECRET);
 }
 
 void start_shell() {
+    printf("Have a lot of fun!\n");
     execl("/bin/sh", "sh", (char*)0);
+    printf("After execl...\n");
 }
 
 int main() {
@@ -38,4 +44,6 @@ int main() {
         printf("Login failed\n");
         return 1;
     }
+
+    return 0;
 }
